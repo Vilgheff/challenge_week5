@@ -6,19 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.thesis.android_challenge_w5.R
 import com.thesis.android_challenge_w5.databinding.FragmentProfileBinding
+import com.thesis.android_challenge_w5.databinding.FragmentUserBinding
 import com.thesis.android_challenge_w5.presentation.signin.SignInFragment
 import com.thesis.android_challenge_w5.model.User
+import com.thesis.android_challenge_w5.presentation.signin.SignInViewModel
+import com.thesis.android_challenge_w5.presentation.user.UserFragment
 
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: ProfileViewModel
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,9 +29,18 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
+    private fun setupViewModel(inflater: LayoutInflater,container: ViewGroup?){
+        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+        binding.lifecycleOwner = this
+        binding.profileViewModel = viewModel
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.btnLogout.setOnClickListener{
+            var controller = findNavController()
+            controller.navigate(R.id.action_profileFragment_to_welcomeFragment)
+        }
     }
 }
