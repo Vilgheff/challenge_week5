@@ -5,22 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.thesis.android_challenge_w5.R
+import com.thesis.android_challenge_w5.databinding.FragmentUserBinding
 import kotlinx.android.synthetic.main.fragment_user.*
 
 
 class UserFragment : Fragment() {
+    private lateinit var binding: FragmentUserBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_user, container, false)
-        return view
+        binding = FragmentUserBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBottomNavigationView()
         setupViewPager()
-
+        binding.imageAvatar.setOnClickListener{
+            val controller = findNavController()
+            controller.navigate(R.id.action_userFragment_to_profileFragment)
+        }
     }
 
     fun getEmailFromBundle(): String? {
@@ -45,7 +51,7 @@ class UserFragment : Fragment() {
     }
 
     private fun setupViewPager() {
-        toolbar.title = "Top Restaurant"
+        toolbar.title = "My Restaurant"
         val mainViewPagerAdapter = UserViewPagerAdapter(childFragmentManager)
         user_view_pager.adapter = mainViewPagerAdapter
         user_view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -61,7 +67,7 @@ class UserFragment : Fragment() {
                 when (position) {
                     UserViewPagerAdapter.TOP_PAGE -> {
                         bottom_nav_user.menu.findItem(R.id.item_top).isChecked = true
-                        toolbar.title = "Top Restaurant"
+                        toolbar.title = "My Restaurant"
 
                     }
                     UserViewPagerAdapter.FAVORITE_PAGE -> {

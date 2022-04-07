@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        app:elevation="0dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
+        android:layout_height="72dp"
+        android:background="#FFF"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMarginStart="130dp"
+        app:titleMarginTop="35dp"
+        app:titleTextColor="@color/black" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            app:titleTextColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/orange"/>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/container_nav_user"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@id/bottom_nav_user"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav_user"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageAvatar"
+        android:layout_width="55dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
+        android:src="@drawable/image_avatar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/user_view_pager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="602dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav_user"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/container_nav_user"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@id/bottom_nav_user" />
+    </androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_user"
@@ -47,10 +53,11 @@
         android:layout_height="wrap_content"
         app:itemIconSize="26sp"
         app:labelVisibilityMode="labeled"
-        app:layout_constraintTop_toBottomOf="@id/user_view_pager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_nav" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
