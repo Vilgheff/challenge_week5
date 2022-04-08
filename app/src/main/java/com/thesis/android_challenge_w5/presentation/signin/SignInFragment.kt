@@ -18,7 +18,6 @@ import com.thesis.android_challenge_w5.presentation.signup.SignUpViewModel
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
     private lateinit var viewModel: SignInViewModel
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setupViewModel(inflater,container)
         val view = binding.root
