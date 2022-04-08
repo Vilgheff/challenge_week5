@@ -127,7 +127,7 @@
         <action
             android:id="@+id/action_profileFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/profileFragment"
+            app:popUpTo="@id/userFragment"
             app:popUpToInclusive="true"/>
     </fragment>
 
