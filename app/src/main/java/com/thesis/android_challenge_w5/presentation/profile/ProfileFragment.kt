@@ -8,15 +8,18 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.thesis.android_challenge_w5.R
+import com.thesis.android_challenge_w5.data.UserDataStore
 import com.thesis.android_challenge_w5.databinding.FragmentProfileBinding
 import com.thesis.android_challenge_w5.databinding.FragmentUserBinding
 import com.thesis.android_challenge_w5.presentation.signin.SignInFragment
 import com.thesis.android_challenge_w5.model.User
 import com.thesis.android_challenge_w5.presentation.signin.SignInViewModel
 import com.thesis.android_challenge_w5.presentation.user.UserFragment
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 class ProfileFragment : Fragment() {
@@ -44,10 +47,10 @@ class ProfileFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.profileViewModel = viewModel
         binding.apply {
-            val email = UserFragment().getEmailFromBundle()
-            email?.let {
-                viewModel.setupUserProfile(email)
-            }
+
+
+
         }
+
     }
 }

@@ -33,12 +33,13 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/user_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="602dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav_user"
+        android:layout_width="412dp"
+        android:layout_height="663dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_user"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_nav_user"
@@ -50,7 +51,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_user"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:itemIconSize="26sp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

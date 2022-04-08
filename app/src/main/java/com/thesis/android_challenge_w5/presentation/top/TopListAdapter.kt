@@ -62,7 +62,6 @@ class TopListAdapter : ListAdapter<Restaurant, TopListAdapter.ViewHolder>(Restau
         private val tvRestaurantAddress: TextView =
             itemView.findViewById(R.id.tv_restaurant_address)
         private val imgRestaurant: ImageView = itemView.findViewById(R.id.img_restaurant)
-        private val imgFavoriteCheck: ImageView = itemView.findViewById(R.id.img_favorite_check)
         private val progressBar: ProgressBar = itemView.findViewById(R.id.progress_bar)
         fun bind(restaurant: Restaurant, listener: RestaurantAdapterListener?) {
             tvRestaurantName.text = restaurant.name
@@ -93,15 +92,7 @@ class TopListAdapter : ListAdapter<Restaurant, TopListAdapter.ViewHolder>(Restau
                 })
                 .into(imgRestaurant)
 
-            if (restaurant.isFavorite) {
-                imgFavoriteCheck.setImageResource(R.drawable.ic_favorite_check)
-            } else {
-                imgFavoriteCheck.setImageResource(R.drawable.ic_favorite_uncheck)
 
-            }
-            imgFavoriteCheck.setOnClickListener {
-                listener?.onItemClicked(restaurant)
-            }
         }
     }
 

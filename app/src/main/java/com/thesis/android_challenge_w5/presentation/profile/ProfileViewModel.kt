@@ -19,7 +19,8 @@ class ProfileViewModel : ViewModel() {
             this.user.value = user
             this.user.postValue(user)
         }
-
+        editEmailUser(email, email)
+        this.user.value?.let { editFullNameUser(email, it.fullName) }
     }
 
     fun editFullNameUser(email: String, fullName: String) {

@@ -5,7 +5,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
-class UserDataStore private constructor() {
+class UserDataStore public constructor() {
     private val userList = ArrayList<User>()
     private lateinit var loginCallback: LoginCallback
     private lateinit var signUpCallback: SignUpCallback
